@@ -1,0 +1,50 @@
+<head>
+	<link href="http://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto:500,300,700,400' rel='stylesheet' type='text/css'>		
+	<link href="css/register.css" rel="stylesheet" />
+	<script src="js/shared/angular.min.js"></script>
+</head>	
+
+<body>
+	<div class="main" ng-controller="RegisterController">
+		<div class="nav">
+			<div class="container">
+				<div class="arrowbutton">
+					<a href="#"><img src="http://i.imgur.com/NavJdoO.jpg" /></a>
+				<!-- Put the back arrow graphics and functionality HERE-->
+				</div>
+			</div>
+		</div>
+
+		<div class="signup">
+			<h1>Sign Up Form</h1>
+
+			<div class="signupform">
+				<form>
+					<div class="formfield">
+						<b>Name</b> <input type="name" placeholder="Company Name">
+					</div>
+					<div class="formfield">
+						<b>Password</b>  <input type="password" placeholder="Password">
+					</div>
+
+					<div class="formfield">
+						<b>Confirm Password</b> <input type="conpassword" placeholder="Confirm Password">
+					</div>
+
+					<div class="formfield">
+						<b>Business</b> <input type="buisness" placeholder="Business Name">
+					</div>
+					<div class="formfield">
+						<b>Phone</b> <input type="phone" placeholder="Company Name">
+					</div>
+					<div class="button">
+						<p id="error_message"></p>
+						<a href="#"> Submit</a>
+					</div>
+				</form>
+			</div>
+		</div>
+
+  </div>
+</body>

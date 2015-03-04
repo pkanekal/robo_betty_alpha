@@ -11,13 +11,15 @@ angular.module('settings')
 		$scope.update = function(){
 			if($scope.user.password == ''){ 
 				$scope.errMessage = 'You must supply your current password.';
-			} else if($scope.pass != $scope.user.password){
+			} else if($scope.user.newPassword == ''){
+                $scope.errMessage = 'You must supply your new password.';
+            }else if($scope.pass != $scope.user.newPassword){
 				$scope.errMessage = 'Invalid password';
-			} else if ($scope.pass.length < 4) {
+			} else if ($scope.user.newPassword.length < 4) {
 				$scope.errMessage = 'Password length must be at least 4 characters!';
 			} else {
 				SettingsService.reg($scope.user)
-					.succsess(function(data){
+					.success(function(data){
 						console.log("Password change successful");
 						$location.path('/dashboard');
 						return data;
@@ -27,5 +29,5 @@ angular.module('settings')
 							return err;
 					});
 			}
-		}
+		};
 }]);

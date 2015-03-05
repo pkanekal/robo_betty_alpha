@@ -72,6 +72,19 @@ angular.module('dashboard')
         $scope.row = {};
         id++;
     };
+    
+ 
+    /*
+    $scope.addEmployee = function(form){
+       alert("Employee added!");
+       $scope.form.name.value = "";
+       $scope.form.number.value = "";
+       $scope.form.email.value = "";
+       return false;
+    };
+    */
+
+
 
     //edit a row
     $scope.editRowCollection = function(row) {

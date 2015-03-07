@@ -33,12 +33,10 @@ angular.module('robobetty',
         parent: 'common',
         title: 'Create New Form'
       })
-      .state('editForm', {
+      .state('editform', {
         url: '/editform',
         controller: 'FormEditController',
-        templateUrl: 'views/components/dashboard/formBuilder/views/edit.html',
-        parent: 'common',
-        title: 'Edit Existing Template'
+        templateUrl: 'views/components/dashboard/formBuilder/views/edit.html'
       })
       .state('dashboard',{
         url:'/dashboard',

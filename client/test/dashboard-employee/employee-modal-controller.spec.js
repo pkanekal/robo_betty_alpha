@@ -7,6 +7,8 @@ describe('Employee Controller', function() {
   var dashboardCtrl;
   var testingHTML;
   beforeEach(module('robobetty'));
+  
+/*
   beforeEach(module('views/components/dashboard/employees/views/employees.html'));
   beforeEach(inject(function (_$controller_,_$rootScope_, _$compile_, _$httpBackend_) {
       Ctrl = _$controller_;
@@ -18,21 +20,21 @@ describe('Employee Controller', function() {
       //dashboardCtrl = Ctrl('EmployeeController',{$scope: scope, $window: {}, $modal: {}});
       //modalCtrl = Ctrl('EmployeeModalController',{$scope: scope2, $modalInstance: {}})
       
-      /*var element = '<employees></employees>';
+      var element = '<employees></employees>';
       compile(element)(scope);
-      scope.$digest();*/
+      scope.$digest();
     })
   );
   
   describe('$scope.test', function () {
     it('should instantiate the controller properly', function () {
       //console.logc(element,scope);
-      /*var html = '<employees></employees>'
+      var html = '<employees></employees>'
       element = angular.element(html);
       compile(element)(scope);
       scope.$digest();
       scope.openModal();
-      console.log(element.html());*/
+      console.log(element.html());
       //scope2.ok
     });
 
@@ -40,6 +42,7 @@ describe('Employee Controller', function() {
 
     });
   });
+  */
   it('Ensure no empty strings allowed in Name field', function() {});
   it('Ensure at least 2 words in Name field', function() {});
   it('Ensure no empty strings allowed in Number field', function() {});

@@ -25,7 +25,7 @@ module.exports = function(config) {
       'dist/bundle.js',
       'client/test/**/*.js',
       
-      'dist/**/*.html',
+      //'dist/**/*.html',
       //'client/**/*.html'
     ],
 
@@ -37,15 +37,16 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-      'dist/**/*.html': 'html2js',
+    //preprocessors: {
+     // 'dist/**/*.html': 'html2js',
       //'client/**/*.html': 'html2js'
-    },
-    
+    //},
+    /*
     ngHtml2JsPreprocessor: {
         // strip app from the file path
         stripPrefix: 'dist/'
     },
+    */
 
 
     // test results reporter to use

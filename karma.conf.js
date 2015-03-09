@@ -24,7 +24,7 @@ module.exports = function(config) {
       'client/bower_components/angular-mocks/angular-mocks.js',
       'dist/bundle.js',
       'client/test/**/*.js',
-      
+      'client/app/components/dashboard/employees/views/employees-modal.html'
       //'dist/**/*.html',
       //'client/**/*.html'
     ],
@@ -35,18 +35,31 @@ module.exports = function(config) {
     ],
 
 
+    preprocessors: {
+       'client/app/components/dashboard/employees/views/employees-modal.html': 'html2js'
+    },
+
+    ngHtml2JsPreprocessor: {
+        // strip app from the file path
+        stripPrefix: 'client/app/components/dashboard/employees/views/'
+    },
+    
+
+    // If browser does not capture in given timeout [ms], kill it
+    captureTimeout: 60000,
+
+    // Continuous Integration mode
+    // if true, it capture browsers, run tests and exit
+    singleRun: false,
+
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     //preprocessors: {
      // 'dist/**/*.html': 'html2js',
       //'client/**/*.html': 'html2js'
     //},
-    /*
-    ngHtml2JsPreprocessor: {
-        // strip app from the file path
-        stripPrefix: 'dist/'
-    },
-    */
+    
+
 
 
     // test results reporter to use
@@ -81,6 +94,7 @@ module.exports = function(config) {
             'karma-mocha',
             'karma-sinon-chai',
             'karma-spec-reporter',
+            'karma-ng-html2js-preprocessor'         
             ],
 
     // Continuous Integration mode

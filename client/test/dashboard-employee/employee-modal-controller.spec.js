@@ -1,12 +1,28 @@
-describe('Employee Controller', function() {
+describe('EmployeeController', function() {
   var scope, scope2;
   var Ctrl;
   var window, doc, compile;
-  var modal, modalCtrl;
+  //var modal, modalCtrl;
   var element;
   var dashboardCtrl;
   var testingHTML;
+
+
   beforeEach(module('robobetty'));
+  beforeEach(module('employees-modal.html'));
+  
+  var $templateCache;
+     beforeEach(inject(function (_$templateCache_) {
+     $templateCache = _$templateCache_;
+  }));
+
+  describe('some test', function () {
+    it('should do something', function () {
+        // --> load the fragment.html content from the template cache <--
+        var fragment = $templateCache.get('employees-modal.html');
+        console.log(fragment);
+    });
+  });
   
 /*
   beforeEach(module('views/components/dashboard/employees/views/employees.html'));

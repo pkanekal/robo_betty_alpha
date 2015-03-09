@@ -16,9 +16,17 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'client/bower_components/angular/angular.js',
+      'client/bower_components/angular-cookies/angular-cookies.js',
+      'client/bower_components/angular-smart-table/dist/smart-table.min.js',
+      'client/bower_components/angular-ui-router/release/angular-ui-router.js',
+      'client/bower_components/angular-ui-utils/ui-utils.js',
+      'client/bower_components/angular-bootstrap/ui-bootstrap.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       'dist/bundle.js',
-      'client/test/**/*.js'
+      'client/test/**/*.js',
+      
+      'dist/**/*.html',
+      //'client/**/*.html'
     ],
 
 
@@ -30,6 +38,13 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'dist/**/*.html': 'html2js',
+      //'client/**/*.html': 'html2js'
+    },
+    
+    ngHtml2JsPreprocessor: {
+        // strip app from the file path
+        stripPrefix: 'dist/'
     },
 
 

@@ -3,9 +3,8 @@ describe('Product Service Controller', function() {
   var ProductCtrl;
   var http;
   var ProductService;
-
   beforeEach(module('product'));
-
+  
   beforeEach(inject(function($controller, _ProductService_, _$httpBackend_) {
     http = _$httpBackend_;
     ProductService = _ProductService_;

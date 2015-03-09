@@ -55,19 +55,45 @@ describe('EmployeeController', function() {
             expect(Ctrl).to.be.defined;
         });
 
-        
+        it('Ensure no empty strings allowed in Name field', function() {
+          var name1 = "";
+        });
+
+        it('Ensure at least 2 words in Name field', function() {
+          var name2 = "First Last";
+        });
+
+        it('Ensure no empty strings allowed in Number field', function() {
+          var number1 = "";
+        });
+
+        it('Ensure at least 7 numbers in Number field', function() {
+          var number2 = "1234567890";
+        });
+
+        it('Ensure no empty strings allowed in Email field', function() {
+          var email1 = "";
+        });
+
+        it('Ensure Email field contains @ and .com', function() {
+          var email2 = "email@address.com";
+        }); 
+
         it('should close the modal when Ok is pressed', function () {
+          //var fragment = element(by.binding('modalForm.name.$invalid'));
           scope.ok();
-          console.log("Enters here");
+          //console.log("Enters here");
           //expect(Ctrl).to.not.exist;
         });
 
 
        it('should close the modal when Cancel', function () {
           scope.cancel();
-          console.log("Enters here 2");
+          //console.log("Enters here 2");
           //expect(modalInstance.dismiss).toHaveBeenCalledWith("cancel");
        });
+
+      
     });
 
 });
@@ -107,10 +133,5 @@ describe('EmployeeController', function() {
     });
   });
   */
-  it('Ensure no empty strings allowed in Name field', function() {});
-  it('Ensure at least 2 words in Name field', function() {});
-  it('Ensure no empty strings allowed in Number field', function() {});
-  it('Ensure at least 7 numbers in Number field', function() {});
-  it('Ensure no empty strings allowed in Email field', function() {});
-  it('Ensure Email field contains @ and .com', function() {});
+
 });

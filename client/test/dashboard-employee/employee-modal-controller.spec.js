@@ -9,8 +9,9 @@ describe('EmployeeController', function() {
 
 
   beforeEach(module('robobetty'));
-  beforeEach(module('employees-modal.html'));
+  //beforeEach(module('employees-modal.html'));
   
+  /*
   var $templateCache;
      beforeEach(inject(function (_$templateCache_) {
      $templateCache = _$templateCache_;
@@ -23,6 +24,53 @@ describe('EmployeeController', function() {
         console.log(fragment);
     });
   });
+*/
+
+  describe('Controller: modalCtrl', function () {
+
+    beforeEach(module('employees-modal.html'));
+
+    var Ctrl;
+    var scope;
+    var modalInstance;
+
+    // Initialize the controller and a mock scope
+    beforeEach(inject(
+        function ($controller, $rootScope, _$modal_) {
+            scope = $rootScope.$new();
+            modalInstance = _$modal_.open({
+                templateUrl: 'employees-modal.html'
+            });
+
+            Ctrl = $controller('EmployeeModalController', {
+                $scope: scope,
+                $modalInstance: modalInstance,
+                //itemArray: function () { return ['a', 'b', 'c']; }
+            });
+        })
+    );
+
+    describe('Initial state', function () {
+        it('should instantiate the controller properly', function () {
+            expect(Ctrl).to.be.defined;
+        });
+
+        
+        it('should close the modal when Ok is pressed', function () {
+          scope.ok();
+          console.log("Enters here");
+          //expect(Ctrl).to.not.exist;
+        });
+
+
+       it('should close the modal when Cancel', function () {
+          scope.cancel();
+          console.log("Enters here 2");
+          //expect(modalInstance.dismiss).toHaveBeenCalledWith("cancel");
+       });
+    });
+
+});
   
 /*
   beforeEach(module('views/components/dashboard/employees/views/employees.html'));

@@ -24,7 +24,8 @@ module.exports = function(config) {
       'client/bower_components/angular-mocks/angular-mocks.js',
       'dist/bundle.js',
       'client/test/**/*.js',
-      'client/app/components/dashboard/employees/views/employees-modal.html'
+      'client/app/components/dashboard/employees/views/employees-modal.html',
+      'client/app/components/dashboard/employees/controllers/*'     
       //'dist/**/*.html',
       //'client/**/*.html'
     ],

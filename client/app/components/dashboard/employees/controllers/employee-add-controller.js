@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('dashboard')
-	.controller('EmployeeModalController', function ($scope, $modalInstance) {
+	.controller('EmployeeAddController', function ($scope, $modalInstance) {
 
 		$scope.ok = function () {
 			$modalInstance.close($scope.modal);

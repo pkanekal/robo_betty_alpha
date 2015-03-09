@@ -9,7 +9,7 @@ angular.module('dashboard')
       controllerAs: 'employeeCtrl'
     };
   })
-  .controller('EmployeeController', ['$scope', '$window', '$modal', function ($scope, $window, $modal) {
+  .controller('EmployeeController', ['$scope', '$window', '$modal', 'filterFilter', function ($scope, $window, $modal, filterFilter) {
     // include root slecope
     $scope.rowCollection = [
         {
@@ -80,29 +80,6 @@ angular.module('dashboard')
     	$scope.displayedCollection = $scope.rowCollection;
     };
 
-    //remove employee confirmation modal
-    $scope.removeEmployee = function(row){
-        var modalInstance = $modal.open({
-          templateUrl: 'views/components/dashboard/employees/views/employee-remove.html',
-          controller: 'EmployeeRemoveController',
-          size: 'md',
-          backdrop: true,
-          resolve: {
-            item: function () {
-                $scope.selectedPatient = row;
-                return $scope.selectedPatient; 
-            }
-          }
-        }).result.then(function(result){
-            $scope.row = result;
-            var index = $scope.rowCollection.indexOf($scope.row);
-            if (index !== -1) {
-                $scope.rowCollection.splice(index, 1);
-                $scope.row = {};
-            }
-        });
-    };
-
     //add employee info
     $scope.submitForm = function(row){
       $scope.rowCollection.unshift(row);
@@ -113,10 +90,10 @@ angular.module('dashboard')
     }
 
     //open add employee form
-    $scope.openModal = function(){
+    $scope.addEmployee = function(){
     	var modalInstance = $modal.open({
     		templateUrl: 'views/components/dashboard/employees/views/employees-modal.html',
-    		controller: 'EmployeeModalController',
+    		controller: 'EmployeeAddController',
     		size: 'md',
     		backdrop: true,
     		resolve: {}
@@ -126,4 +103,50 @@ angular.module('dashboard')
     	});
     }
 
+    // singular remove instance
+    $scope.removeEmployee = function(row){
+        var modalInstance = $modal.open({
+            templateUrl: 'views/components/dashboard/employees/views/employee-remove.html',
+            controller: 'EmployeeRemoveController',
+            size: 'md',
+            backdrop: true,
+            resolve: {
+              item: function () {
+                $scope.selectedEmployee = row;
+                return $scope.selectedEmployee; 
+              }
+            }
+          }).result.then(function(result){
+            $scope.row = result;
+            var index = $scope.rowCollection.indexOf($scope.row);
+            if (index !== -1) {
+              $scope.rowCollection.splice(index, 1);
+            }
+          });
+    }
+
+    // multiple remove instance
+    $scope.removeMultiple = function(row){
+        var modalInstance = $modal.open({
+            templateUrl: 'views/components/dashboard/employees/views/employee-remove-multiple.html',
+            controller: 'EmployeeRemoveMultipleController',
+            size: 'md',
+            backdrop: true,
+            resolve: {
+              item: function () {
+                $scope.selectedEmployees = row;
+                return $scope.selectedEmployees; 
+              }
+            }
+          }).result.then(function(result){
+            $scope.selectedEmployees = result;
+            $scope.removeMultipleFinal($scope.selectedEmployees);
+          });
+    }
+
+    $scope.removeMultipleFinal = function(row){
+        $scope.rowCollection = filterFilter($scope.rowCollection, function(row){
+                return !row.selected;
+        });
+    }
 }]);

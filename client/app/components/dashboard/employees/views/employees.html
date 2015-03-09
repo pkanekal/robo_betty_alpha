@@ -5,14 +5,13 @@
 	<div id="doctors-table">
 		<table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped">
 			<thead>
-				
 				<tr>
 					<th colspan='1'></th>
 					<th colspan="1">
 						<input st-search="" class="form-control" placeholder="Search" type="text"/>
 					</th>
 					<th colspan='1'>
-						<button type="button" class="btn btn-success" ng-click="addEmpoyee(row)">
+						<button type="button" class="btn btn-success" ng-click="addEmployee(row)">
 							<i class="glyphicon glyphicon-plus">
 							</i> Add Employee
 						</button>
@@ -23,24 +22,24 @@
 					</th>
 				</tr>
 				<tr>
-					<th st-sort="firstName">Name</th>
-					<th st-sort="birthDate">Phone Number</th>
-					<th st-sort="balance">Email</th>
+					<th st-sort="Name">Name</th>
+					<th st-sort="PhoneNumber">Phone Number</th>
+					<th st-sort="Email">Email</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="row in displayedCollection">
+				<tr ng-repeat="row in displayedCollection"><!-- ng-disabled="!row.Name || !row.PhoneNumber || !row.Email"-->
 					<td style="padding-left:2em;">
-						<span data-ng-hide="editMode"><input class='ngSelectionCheckbox' type='checkbox' ng-checked='row.selected' ng-model='row.selected'> {{row.Name}}</span>
+						<span data-ng-hide="editMode"><input class='ngSelectionCheckbox' type='checkbox' ng-checked='row.selected' ng-model='row.selected'><span  ng-click="editRowCollection(row)"> {{row.Name}} </span></span>
 						<input name="name" type="text" class="form-control edit-input" data-ng-show="editMode" data-ng-model="row.Name" ng-pattern="/^[^0-9]+$/" data-ng-required required />
 						<p ng-show="!row.Name" class="help-block">Name cannot have numbers.</p>
 					</td>
-					<td>
+					<td ng-click="editRowCollection(row)">
 						<span data-ng-hide="editMode">{{row.PhoneNumber}}</span>
-						<input name="number" type="text" class="form-control edit-input" data-ng-show="editMode" data-ng-model="row.PhoneNumber" ui-mask="{{'(999) 999-9999'}}" data-ng-required required>
+						<input name="number" type="text" class="form-control edit-input" data-ng-show="editMode" data-ng-model="row.PhoneNumber" data-ng-required required>
 						<p ng-show="!row.PhoneNumber" class="help-block">Enter a valid phone number.</p>
 					</td>
-					<td>
+					<td ng-click="editRowCollection(row)">
 						<span data-ng-hide="editMode">{{row.Email}}</span>
 						<input type="email" name="email" class="form-control edit-input" data-ng-show="editMode" data-ng-model="row.Email" data-ng-required required>
 						<p ng-show="!row.Email" class="help-block">Enter a valid email.</p>

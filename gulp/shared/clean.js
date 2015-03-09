@@ -3,5 +3,5 @@ var del = require('del');
 
 /* Remove the generated dist */
 gulp.task('clean', function(cb) {
-  del('./dist/', cb);
+  del(['./dist/','./html_status/'], cb);
 });

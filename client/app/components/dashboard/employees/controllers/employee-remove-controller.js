@@ -3,10 +3,10 @@
 angular.module('dashboard')
 	.controller('EmployeeRemoveController', function ($scope, $modalInstance, item) {
 
-		$scope.selectedPatient = item;
+		$scope.selectedEmployee = item;
 
 		$scope.ok = function () {
-            $modalInstance.close($scope.selectedPatient);
+            $modalInstance.close($scope.selectedEmployee);
 		};
 
 		$scope.cancel = function () {

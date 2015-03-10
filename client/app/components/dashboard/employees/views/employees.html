@@ -1,40 +1,50 @@
-<div ng-controller="EmployeeController" class="container">
-	<button type="button" class="btn btn-block btn-success" ng-click="openModal()">
-		<i class="glyphicon glyphicon-plus">
-		</i> Add
-	</button>
+<div ng-controller="EmployeeController" class="container" style='padding-left:5em;'>
+	<h1 align="center">Employees</h1><br>
 	<br>
 	<br>
 	<div id="doctors-table">
 		<table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped">
 			<thead>
 				<tr>
-					<th st-sort="firstName">Name</th>
-					<th st-sort="birthDate">Phone Number</th>
-					<th st-sort="balance">Email</th>
+					<th colspan='1'></th>
+					<th colspan="1">
+						<input st-search="" class="form-control" placeholder="Search" type="text"/>
+					</th>
+					<th colspan='1'>
+						<button type="button" class="btn btn-success" ng-click="addEmployee(row)">
+							<i class="glyphicon glyphicon-plus">
+							</i> Add Employee
+						</button>
+						<button type="button" class="btn btn-danger" ng-click="removeMultiple(row)">
+							<i class="glyphicon glyphicon-remove">
+							</i> Remove Employees
+						</button>
+					</th>
 				</tr>
 				<tr>
-					<th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+					<th st-sort="Name">Name</th>
+					<th st-sort="PhoneNumber">Phone Number</th>
+					<th st-sort="Email">Email</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="row in displayedCollection">
+				<tr ng-repeat="row in displayedCollection"><!-- ng-disabled="!row.Name || !row.PhoneNumber || !row.Email"-->
 					<td style="padding-left:2em;">
-						<span data-ng-hide="editMode">{{row.Name}}</span>
+						<span data-ng-hide="editMode"><input class='ngSelectionCheckbox' type='checkbox' ng-checked='row.selected' ng-model='row.selected'><span  ng-click="displayEmployee(row)"> {{row.Name}} </span></span>
 						<input name="name" type="text" class="form-control edit-input" data-ng-show="editMode" data-ng-model="row.Name" ng-pattern="/^[^0-9]+$/" data-ng-required required />
 						<p ng-show="!row.Name" class="help-block">Name cannot have numbers.</p>
 					</td>
-					<td>
+					<td ng-click="displayEmployee(row)">
 						<span data-ng-hide="editMode">{{row.PhoneNumber}}</span>
-						<input name="number" type="text" class="form-control edit-input" data-ng-show="editMode" data-ng-model="row.PhoneNumber" ui-mask="{{'(999) 999-9999'}}" data-ng-required required>
+						<input name="number" type="text" class="form-control edit-input" data-ng-show="editMode" data-ng-model="row.PhoneNumber" data-ng-required required>
 						<p ng-show="!row.PhoneNumber" class="help-block">Enter a valid phone number.</p>
 					</td>
-					<td>
+					<td ng-click="displayEmployee(row)">
 						<span data-ng-hide="editMode">{{row.Email}}</span>
 						<input type="email" name="email" class="form-control edit-input" data-ng-show="editMode" data-ng-model="row.Email" data-ng-required required>
 						<p ng-show="!row.Email" class="help-block">Enter a valid email.</p>
 					</td>
-					<td>
+					<!--<td>
 						<button type="submit" data-ng-hide="editMode" data-ng-click="editMode = true; editRowCollection(row)" class="btn col-md-5 btn-info btn-edit" style="margin-right:.5em;">
 							<i class="glyphicon glyphicon-pencil">
 							</i>
@@ -46,7 +56,7 @@
 						<button type="button" ng-click="editMode ? cancel(row) : removeEmployee(row); editMode=false" class="btn col-md-5 btn-danger">
 							<i ng-class="editMode ? 'glyphicon glyphicon-ban-circle':'glyphicon glyphicon-remove'"></i>
 						</button>
-					</td>
+					</td>-->
 				</tr>
 			</tbody>
 		</table>

@@ -68,6 +68,21 @@ angular.module('dashboard')
     //copy the references (you could clone ie angular.copy but then have to go through a dirty checking for the matches)
     $scope.displayedCollection = [].concat($scope.rowCollection);
 
+    $scope.displayEmployee = function(row) {
+        var modalInstance = $modal.open({
+            templateUrl: 'views/components/dashboard/employees/views/employee-display.html',
+            controller: 'EmployeeDisplayController',
+            size: 'md',
+            backdrop: true,
+            resolve: {
+              item: function () {
+                $scope.employee = row;
+                return $scope.employee; 
+              }
+            }
+          });
+    }
+
     //edit a row
     $scope.editRowCollection = function(row) {
         var modalInstance = $modal.open({
@@ -77,13 +92,13 @@ angular.module('dashboard')
         backdrop: true,
         resolve: {
           item: function () {
-            $scope.row = row;
-            return $scope.row; 
+            $scope.employee = row;
+            return $scope.employee; 
           }
         }
         }).result.then(function(result){
-        $scope.editing = $scope.rowCollection.indexOf(result)
-        $scope.newField = angular.copy(result);
+            $scope.editing = $scope.rowCollection.indexOf(result)
+            $scope.newField = angular.copy(result);
         });
     }
 

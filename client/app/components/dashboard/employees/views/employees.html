@@ -30,16 +30,16 @@
 			<tbody>
 				<tr ng-repeat="row in displayedCollection"><!-- ng-disabled="!row.Name || !row.PhoneNumber || !row.Email"-->
 					<td style="padding-left:2em;">
-						<span data-ng-hide="editMode"><input class='ngSelectionCheckbox' type='checkbox' ng-checked='row.selected' ng-model='row.selected'><span  ng-click="editRowCollection(row)"> {{row.Name}} </span></span>
+						<span data-ng-hide="editMode"><input class='ngSelectionCheckbox' type='checkbox' ng-checked='row.selected' ng-model='row.selected'><span  ng-click="displayEmployee(row)"> {{row.Name}} </span></span>
 						<input name="name" type="text" class="form-control edit-input" data-ng-show="editMode" data-ng-model="row.Name" ng-pattern="/^[^0-9]+$/" data-ng-required required />
 						<p ng-show="!row.Name" class="help-block">Name cannot have numbers.</p>
 					</td>
-					<td ng-click="editRowCollection(row)">
+					<td ng-click="displayEmployee(row)">
 						<span data-ng-hide="editMode">{{row.PhoneNumber}}</span>
 						<input name="number" type="text" class="form-control edit-input" data-ng-show="editMode" data-ng-model="row.PhoneNumber" data-ng-required required>
 						<p ng-show="!row.PhoneNumber" class="help-block">Enter a valid phone number.</p>
 					</td>
-					<td ng-click="editRowCollection(row)">
+					<td ng-click="displayEmployee(row)">
 						<span data-ng-hide="editMode">{{row.Email}}</span>
 						<input type="email" name="email" class="form-control edit-input" data-ng-show="editMode" data-ng-model="row.Email" data-ng-required required>
 						<p ng-show="!row.Email" class="help-block">Enter a valid email.</p>

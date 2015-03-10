@@ -6,7 +6,9 @@
 		<p>Name: {{ employee.Name }}</p>
 		<p>Phone: {{ employee.PhoneNumber }}</p>
 		<p>Email: {{ employee.Email }}</p>
-		<button type="button" ng-click="editRowCollection(employee)" class="btn btn-md btn-primary pull-right">Edit</button>
-		<button type="button" ng-click="cancel()" class="btn btn-md btn-default pull-right">Exit</button>
+		<p>
+			<button type="button" ng-click="ok(employee)" class="btn btn-md btn-primary pull-rght" style="margin-right:.5em;">Edit</button>
+			<button type="button" ng-click="cancel()" class="btn btn-md btn-default pull-right">Exit</button>
+		</p>
 	</div>
 </div>

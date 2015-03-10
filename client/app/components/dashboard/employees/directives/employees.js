@@ -80,7 +80,9 @@ angular.module('dashboard')
                 return $scope.employee; 
               }
             }
-          });
+          }).result.then(function(result){
+            $scope.editRowCollection(result);
+        });
     }
 
     //edit a row

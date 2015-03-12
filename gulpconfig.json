@@ -1,0 +1,5 @@
+{
+  "cssFiles": [
+  "./client/assets/**/*.css"
+  ]
+}

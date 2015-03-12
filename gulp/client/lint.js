@@ -29,11 +29,23 @@ gulp.task('lint:htmlhint', ['htmlify'],function(){
  * -Validate the html pages
  * -Output the results .html_status directory
  */
-gulp.task('lint:htmlv', ['lint:htmlhint'],function(){
+gulp.task('lint:anghtmlify', ['lint:htmlhint'],function(){
   return gulp.src('./dist/**/*.html')
     .pipe(anghtmlify({customPrefixes: ['ui-']}))
+    .pipe(gulp.dest('./html_status/'));
+});
+gulp.task('lint:htmltidy', ['lint:anghtmlify'],function(){
+  return gulp.src('./html_status/**/*.html')
     .pipe(htmltidy({doctype: 'html', hideComments: true, indent: true}))
+    .pipe(gulp.dest('./html_status/'));
+});
+gulp.task('lint:htmlreplace', ['lint:htmltidy'],function(){
+  return gulp.src('./html_status/**/*.html')
     .pipe(replace('<title></title>', '<title>Title</title>'))
+    .pipe(gulp.dest('./html_status/'));
+});
+gulp.task('lint:htmlv', ['lint:htmlreplace'],function(){
+  return gulp.src('./html_status/**/*.html')
     .pipe(htmlv({format: 'html'}))
     .pipe(gulp.dest('./html_status/'));
 });

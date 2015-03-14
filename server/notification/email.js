@@ -20,6 +20,7 @@ var transporter = nodemailer.createTransport({
 
 // sendEmail: Send email to employees when patient is checked in.
 exports.sendEmail = function(employees, done) {
+  console.log("SENTNTNTNTNTNTNTNTNTNTNTNTNTNNTT", employees);
   if(employees === null || (employees.length <= 0)) {
     if(done) return done();
   }

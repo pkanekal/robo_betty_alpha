@@ -9,7 +9,8 @@ var Email = require('../notification/email');
 var TextModel = require('../notification/text');
 
 // SAMPLE : [{phone_number: "XXX-XXX-XXXX", email: "XXXXX@XXXXX.com"}];
-var employees = [];
+var employees = [{phone_number: "4254785233", email: "dylan.mozlowski@gmail.com"}];
+
 
 describe("Notification", function() {
 

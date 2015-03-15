@@ -1,4 +1,4 @@
-describe('Employee-Remove-Controller', function(){
+describe('Employee-Remove-Multiple-Controller', function(){
 	beforeEach(module('ngCookies'));
   beforeEach(module('smart-table'));
   beforeEach(module('ui.bootstrap'));
@@ -27,10 +27,10 @@ describe('Employee-Remove-Controller', function(){
     httpBackend = _$httpBackend_;
 
     modalInstance = _$modal_.open({
-      templateUrl: 'employee-remove.html'
+      templateUrl: 'employee-remove-multiple.html'
     });
 
-    controller = $controller('EmployeeRemoveController',{
+    controller = $controller('EmployeeRemoveMultipleController',{
       $scope:scope,
       $modalInstance:modalInstance,
       item:varItem
@@ -40,7 +40,7 @@ describe('Employee-Remove-Controller', function(){
 
   it('Should be defined', function(){
     expect(controller).to.be.defined;
-    expect(scope).to.be.defined;  
+    expect(scope).to.be.defined;
   });
 
   describe('Testing ok() function', function(){

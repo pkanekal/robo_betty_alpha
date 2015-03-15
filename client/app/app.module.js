@@ -17,7 +17,6 @@ angular.module('robobetty',
    'recoverythx',
    'themes'
    ])
-
   .config(function($stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise('/patientQueue');
     $stateProvider
@@ -100,15 +99,15 @@ angular.module('robobetty',
         templateUrl: 'views/components/dashboard/themes/views/dashboardIndex.html'
       });
   })
-  .run(['$rootScope', '$injector', function($rootScope, $injector){
-    $injector.get("$http").defaults.transformRequest = function(data, headersGetter) 
-    { 
-      if ($rootScope.token) headersGetter()['token'] = $rootScope.token;
-      if ($rootScope.email) headersGetter()['email'] = $rootScope.email; 
-      if (data) 
-        { 
-            return angular.toJson(data); 
-          }
-    } 
+  .run(['$rootScope', '$state', function($rootScope, $state){
+    $rootScope.$on('$stateChangeSuccess', 
+    function(event, toState, toParams, fromState, fromParams){
+      if(!$rootScope.admin_id) {
+        if(toState.name != 'signin') {
+      // debugger
+          $state.go("signin");
+        }
+      }
+    });
   }]);
 

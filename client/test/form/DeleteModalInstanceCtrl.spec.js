@@ -1,4 +1,4 @@
-describe('DeleteModalInstanceCtrl',function() {
+describe('Delete Modal Instance Ctrl',function() {
   beforeEach(module("ui.bootstrap"));
   beforeEach(module("DashboardFormBuilderModule"));
 

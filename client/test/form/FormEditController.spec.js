@@ -1,4 +1,4 @@
-describe('FormEditController',function() {
+describe('Form Edit Controller',function() {
   beforeEach(module("ui.bootstrap"));
   beforeEach(module("DashboardFormBuilderModule"));
 

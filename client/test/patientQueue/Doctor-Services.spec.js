@@ -5,7 +5,7 @@ describe('Doctor-Services',function(){
   beforeEach(module('ui.mask'));
   beforeEach(module('dashboard'));
 
-  var controller, scope, httpBackend, doctorService;
+  var scope, httpBackend, doctorService;
 
   beforeEach(inject(function(_DoctorService_,$rootScope,_$httpBackend_,$http){
     doctorService = _DoctorService_;

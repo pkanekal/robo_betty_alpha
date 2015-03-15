@@ -70,7 +70,9 @@ describe('FormEditController',function() {
     it('Should have correct info',function(){
       scope.form = json;
       scope.postJson();
-
+      console.log(scope.form);
+      expect(scope.form).to.be.defined;
+      
       expect(scope.form.form_name).to.equal("Test");
       expect(scope.form.form_id).to.equal(1);
       expect(scope.form.form_fields).to.be.defined;

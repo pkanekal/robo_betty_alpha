@@ -18,7 +18,7 @@ describe('Form Create Controller', function() {
   }));
 
   beforeEach(function(){
-    editOnAPI= '/api/form/template/company/54f8f23546b787e8335980e7';
+    editOnAPI = '/api/form/template/company/54f8f23546b787e8335980e7';
     httpBackend.whenGET(editOnAPI).respond(200);
   });
 

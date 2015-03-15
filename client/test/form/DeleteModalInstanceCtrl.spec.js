@@ -15,7 +15,7 @@ describe('DeleteModalInstanceCtrl',function() {
     controller = $controller('DeleteModalInstanceCtrl',{
       $scope:scope,
       $modalInstance:modalInstance
-    })
+    });
 
   }));
 

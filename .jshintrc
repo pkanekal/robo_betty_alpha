@@ -23,9 +23,10 @@
 
     // Custom Globals
     "globals"       : {
-      "angular": true,
-      "module": true,
-      "require": true,
-      "__dirname": true
+        "$"         : false,
+        "angular"   : true,
+        "module"    : true,
+        "require"   : true,
+        "__dirname" : true
     }
 }

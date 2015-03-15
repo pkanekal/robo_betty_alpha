@@ -14,6 +14,11 @@ describe('Signin Controller Test', function() {
 		});
 	}));
 
+	// reset error message after each test case
+	afterEach(function() {
+		errMessage = '';
+	});
+
 	//testing initial setup 
 	describe('Controller', function() {
 		
@@ -24,7 +29,7 @@ describe('Signin Controller Test', function() {
 		it('user email must be initially empty', function() {
 			assert.equal('',scope.user.email); 
 		});
-		
+
 		it('user password must be initially empty', function() {
 			assert.equal('', scope.user.password); 
 		});

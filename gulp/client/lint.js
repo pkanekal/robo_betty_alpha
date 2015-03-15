@@ -17,3 +17,5 @@ gulp.task('lint:html', ['htmlify'],function(){
     .pipe(htmlhint())
     .pipe(htmlhint.reporter())
 });
+
+gulp.task('lint', ['lint:client', 'lint:html']);

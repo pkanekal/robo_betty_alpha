@@ -14,11 +14,11 @@ angular.module('register')
       
         //function that is called when user clicks submit that stores information in the backend
   		$scope.reg = function(){ 
-        $scope.user.company_phone_number = '';    
-            
+         $scope.user.company_phone_number = '';    
+
         //making sure the number is not null before calling toString method
         if($scope.number != null){
-            console.log(typeof $scope.user.company_phone_number);
+            // console.log(typeof $scope.user.company_phone_number);
             $scope.user.company_phone_number = $scope.number.toString();
         }
             

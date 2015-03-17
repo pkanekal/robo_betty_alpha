@@ -2,7 +2,11 @@ describe('Form Create Controller', function() {
   beforeEach(module("ui.bootstrap"));
   beforeEach(module("DashboardFormBuilderModule"));
 
-  var controller, scope, FormService, editOnAPI, httpBackend;
+  var controller, 
+  scope, 
+  FormService, 
+  editOnAPI, 
+  httpBackend;
 
   beforeEach(inject(function($controller,$rootScope,$modal,_FormService_,$http,$filter,$location,_$httpBackend_){
     scope = $rootScope.$new();

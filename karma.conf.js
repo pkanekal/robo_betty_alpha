@@ -18,6 +18,9 @@ module.exports = function(config) {
       'client/bower_components/angular/angular.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       'client/bower_components/angular-bootstrap/ui-bootstrap.js',
+      'client/bower_components/angular-cookies/angular-cookies.js',
+      'client/bower_components/angular-smart-table/dist/smart-table.min.js',
+      'client/bower_components/angular-ui-utils/ui-utils.js',
       'dist/bundle.js',
       'client/test/**/*.js'
     ],

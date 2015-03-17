@@ -2,7 +2,10 @@ describe('DeleteModalInstanceCtrl',function() {
   beforeEach(module("ui.bootstrap"));
   beforeEach(module("DashboardFormBuilderModule"));
 
-  var scope, httpBackend, controller, modalInstance;
+  var scope, 
+  httpBackend, 
+  controller, 
+  modalInstance;
 
   beforeEach(inject(function($controller,$rootScope,_$httpBackend_,_$modal_){
     scope = $rootScope.$new();

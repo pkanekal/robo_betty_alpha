@@ -25,7 +25,7 @@ angular.module('auth')
       }
 
       /* Return promise to caller so they can call success and error too */
-      return $http.post('/auth/login', payload).success(success).error(error);
+      return $http.post('http://blue-jay-dev.herokuapp.com/auth/login', payload).success(success).error(error);
 
     };
 
@@ -50,7 +50,7 @@ angular.module('auth')
       }
 
       /* Return promise to caller so they can call success and error too */
-      return $http.post('/auth/signup', payload);
+      return $http.post('http://blue-jay-dev.herokuapp.com/auth/signup', payload);
     };
 
   }]);

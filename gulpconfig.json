@@ -1,0 +1,10 @@
+{
+  "cssFiles": [
+  "./client/assets/css/header-bar.css",
+  "./client/assets/css/sidebar.css",
+  "./client/assets/css/employees.css",
+  "./client/assets/css/patients.css",
+  "./client/assets/css/fonts.css",
+  "./client/assets/css/form.css"
+  ]
+}

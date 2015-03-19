@@ -12,7 +12,8 @@ var formTemplate = new mongoose.Schema({
       required: true
   },
   template: {
-      type: Object
+      type: Object,
+      required: true
   }
 });
 

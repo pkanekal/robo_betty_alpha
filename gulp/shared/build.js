@@ -5,6 +5,13 @@ var uglify = require('gulp-uglify'),
 
 var gulp = require('gulp');
 
+/* Variables to detect which environment we are in
+ * This determines how our app is built.
+ * Development is the default
+ */
+var env = process.env.NODE_ENV || 'development';
+var buildTask = (env === 'production') ? 'build:prod' : 'build:dev';
+
 gulp.task('htmlify', ['copy:views'],function(){
   return gulp.src('./dist/**/*.html')
     .pipe(htmlify())
@@ -38,3 +45,6 @@ gulp.task('build:dev', ['dist']);
 
 /* Build the app and minfy */
 gulp.task('build:prod', ['dist', 'minify:js', /*'minify:css',*/ 'htmlify']);
+
+/* Build app based on environment */
+gulp.task('build', [buildTask]);

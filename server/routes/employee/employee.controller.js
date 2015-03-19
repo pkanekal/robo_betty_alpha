@@ -8,12 +8,6 @@ var express = require('express');
 var router = express.Router();
 var exports = module.exports;
 
-/* need this to enable cross origin resource sharing.If disabled, we might
- * not need this later. This is just to get the example to work
- * when front end is served from a something other than our app server.
- */
-var cors = require('cors');
-
 var Employee = require('../../models/Employee');
 
 exports.getAllEmployees = function(req, res) {
@@ -57,7 +51,7 @@ exports.insert = function(req, res) {
 exports.update = function(req, res) {
     Employee.findById(req.params.id, function (err, employee) {
       if(err)
-         res.json(err);
+         return res.status(400).json(err);
  
       employee.name = req.body.name || employee.name;
       employee.email = req.body.email || employee.email;
@@ -65,9 +59,8 @@ exports.update = function(req, res) {
       employee._admin_id = req.body._admin_id || employee._admin_id;
 
       employee.save(function(err) {
-        if(err) {
+        if(err)
           return res.status(400).json(err);
-        }
       });
       return res.status(200).send(employee);
    });

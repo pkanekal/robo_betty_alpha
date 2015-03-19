@@ -1,17 +1,21 @@
 .form-fields {
-	width: 55%;
+	width: 50%;
 	border-right: 2px solid #434343;
 	padding-right: 19px;
 }
 
 .form-fields-preview {
-	padding-left: 19px;
+	margin-right: auto;
 }
 
 input {
-	width: 95%;
-	height: 35px;
-	padding-left: 5px;
+  	width: initial;
+	height: initial;
+	margin-top: 20px;
+}
+
+textarea {
+	color: black;
 }
 
 .require-radio {
@@ -32,5 +36,33 @@ label {
 	color: white;
 }
 #logo{
-	margin: auto;
+   float:center;
+}
+#tyLogo{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 217px;
+}
+#tyText{
+    text-align: center;
+    white-space: nowrap;
+}
+#tyDiv{
+    margin: auto;   
+}
+
+.required-error {
+  	display: inline;
+  	color: red;
+  	font-size: smaller;
+}
+
+.span4 input {
+	display: inline;
+	padding-left: 8px;
+}
+
+.span2 {
+	margin-bottom: 0 !important;
 }

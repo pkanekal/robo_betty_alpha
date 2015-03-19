@@ -309,7 +309,75 @@ describe("Forms", function() {
 
     });
 
-      
+    // Additional Tests made my Vishnu Narayana
+    describe('Admin Id tests for forms', function() {
+      //Test for sendByAdminId
+      var templateFormId = null;
+      describe("Send By Admin ID Templates", function() {
+        describe('POST /template/:adminid', function(){
+          it('should create or update the template', function(done){
+            request(url)
+              .post('/api/form/template')
+              .query({email: credentials.email, token: credentials.token, isAdmin:true})
+              .expect(200)
+            .send({
+              _admin_id: credentials.admin._id,
+              template: templateForm,
+            })
+            .end(function(err, res){
+              res.statusCode.should.be.equal(200);
+              res.body.should.have.property('template').and.be.instanceof(Object);
+              templateFormId = res.body._id;
+              done();
+            });
+          });
+        });
+      });
+
+
+      // For GET /api/form/template/:adminid
+      describe('GET /api/form/template/:adminid', function(){
+        it('Should respond with company template data', function(done){
+          request(url)
+            .get('/api/form/template/' + credentials.admin._id)
+            .query({email: credentials.email, token: credentials.token, isAdmin:true})
+          .end(function(err, res){
+            res.body.should.have.property('_id');
+            res.body.should.have.property('_admin_id');
+            res.body.should.have.property('template').and.be.instanceof(Object);
+            res.body.template.should.deep.equal(templateForm);
+            res.body._id.should.equal(templateFormId);
+            res.statusCode.should.equal(200);
+            done();
+          });
+        });
+      });
+
+      //For GET with Invalid Admin ID
+      describe('GET /api/form/template/:adminid', function(){
+        it('should respond with status 400 for no template found', function(done){
+          request(url)
+            .get('/api/form/template/' + credentials.admin._id + 'foo')
+            .query({email: credentials.email, token: credentials.token, isAdmin:true})
+          .end(function(err, res){
+            res.statusCode.should.equal(400);
+            done();
+          });
+        });
+      });
+
+      describe('GET /api/form/template/company/:id', function(){
+        it('Should respond with status 400 for Invalid adminId', function(done){
+          request(url)
+            .get('/api/form/template/company/' + credentials.admin._id+"foo")
+            .query({email: credentials.email, token: credentials.token, isAdmin:true})
+          .end(function(err, res){
+            res.statusCode.should.be.equal(400);
+            done();
+          });
+        });
+      });
+    });
     
 
     after(function(done) {

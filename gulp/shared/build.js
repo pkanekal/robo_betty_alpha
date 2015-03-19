@@ -17,7 +17,7 @@ gulp.task('ng-annotate', ['concat:js'], function () {
     .pipe(gulp.dest('./dist/'));
 });
 
-/* Minify bundle.css. If it doesn't exist, create 
+/* Minify bundle.css. If it doesn't exist, create
  * it first using concat:css
  */
 gulp.task('minify:css', ['concat:css'], function() {
@@ -37,4 +37,4 @@ gulp.task('minify:js', ['ng-annotate'], function() {
 gulp.task('build:dev', ['dist']);
 
 /* Build the app and minfy */
-gulp.task('build:prod', ['dist', 'minify:js', /*'minify:css',*/ 'htmlify']);
+gulp.task('build:prod', ['dist', 'minify:js', 'minify:css', 'htmlify']);

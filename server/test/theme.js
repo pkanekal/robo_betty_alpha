@@ -62,16 +62,6 @@ describe('Theme Settings Model', function() {
         });
     });
 
-    it('should remove(DELETE) theme setting', function(done) {
-        Theme.remove({
-            user_id: "test"
-        }, function(err, theme) {
-            if (err) return done(err);
-            theme.should.equal(1);
-            done();
-        });
-    });
-
 });
 
 //Route Tests need to be changed to work with auth
@@ -198,21 +188,6 @@ describe("Themes Route Test", function() {
                         res.body.displaySignature.should.equal(_displaySignature);
                         res.body.additionalComments.should.equal(_additionalComments);
 
-                        done();
-                    });
-            });
-        });
-
-        describe('DELETE /api/:user_id/theme', function() {
-            it('should respond with successful delete', function(done) {
-                var url = "localhost:" + config.port;
-                var user_id = '1';
-                request(url)
-                    .delete('/api/' + user_id + '/theme')
-                    .query({email: credentials.email, token: credentials.token})
-                    .end(function(err, res) {
-                        console.log(res.body);
-                        res.body.should.equal(1);
                         done();
                     });
             });

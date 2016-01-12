@@ -32,6 +32,10 @@ app.use(morgan('dev', {"stream": winstonConfig.stream}));
 /*
  * Connect to MongoDB.
  */
+console.log("---------------");
+console.log("mongourl " + config.mongoDBUrl);
+console.log("---------------");
+
 mongoose.connect(config.mongoDBUrl);
 mongoose.connection.on('connected', function() {
   console.log('MongoDB connected succesfully at: ' + config.mongoDBUrl);
@@ -39,6 +43,19 @@ mongoose.connection.on('connected', function() {
 
 mongoose.connection.on('error', function() {
   console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  config.mongoDBUrl = 'mongodb://heroku_1zm72tdd:ppeo8mhp9ao849s1g639rm32lv@ds043605.mongolab.com:43605/heroku_1zm72tdd';
+  console.log("---------------");
+  console.log("mongourl " + config.mongoDBUrl);
+  console.log("---------------");
+
+  mongoose.connect(config.mongoDBUrl);
+  mongoose.connection.on('connected', function() {
+    console.log('MongoDB connected succesfully at: ' + config.mongoDBUrl);
+  });
+
+  mongoose.connection.on('error', function() {
+    console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  });
 });
 
 /*
